@@ -1,0 +1,116 @@
+<!DOCTYPE html> 
+
+<html>
+<head>
+
+
+<title> Word Game </title> 
+
+<style> 
+body {
+        background : #bdf6e0; 
+        color : black; 
+    }
+.design{
+        border: 0;
+        border-radius: 15px;
+        height:50px;
+        width:50px;
+        background-color: #4d88e8; 
+        font-size: 30px;
+        color: #ffffff;
+    }
+.text{
+    border: 0;
+        border-radius: 15px;
+        height:50px;
+        width:50px;
+        background-color: #a7c4f4; 
+        font-size: 30px;
+        color: #ffffff;
+
+}
+.design:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer
+}
+</style> 
+
+<script>
+var words = []; 
+
+function getWords(event,i)
+{
+    var test = document.getElementById("new"); 
+    var currentResult = document.getElementById("create"); 
+        if(event.target.id =="word"+i){
+        words.push(document.getElementById("word"+i).value)
+        console.log(words);
+        currentResult.value = words.join(''); 
+        }
+        else if (event.target.id =="deleteInput")
+        {
+            currentResult.value = words.pop(); 
+            currentResult.value = words.join('');  
+            console.log(words);
+        }
+        if(event.target.id == "clear"){
+            document.getElementById("new").value = ""; 
+            document.getElementById("create").value = ""; 
+        }
+    
+
+}
+
+function displayNewWord()
+{
+    var result = document.getElementById("new"); 
+    result.value += words.join('')+'\n';
+    words = []; 
+    document.getElementById("create").value= ""; 
+}
+
+</script>
+
+</head>
+<body> 
+<center> 
+<h1>Combinations Words</h1>
+<p> Below there is a word constructed with buttons, create as many as new words using them</p>
+<table>
+    <tr>
+        <td><input class = "design" type= "button" name = "letter" id = "word1" Value = "T" onclick= "javascript:getWords(event,1)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word2" Value = "R" onclick= "javascript:getWords(event,2)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word3" Value = "A" onclick= "javascript:getWords(event,3)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word4" Value = "M" onclick= "javascript:getWords(event,4)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word5" Value = "P" onclick= "javascript:getWords(event,5)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word6" Value = "O" onclick= "javascript:getWords(event,6)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word7" Value = "L" onclick= "javascript:getWords(event,7)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word8" Value = "I" onclick= "javascript:getWords(event,8)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word9" Value = "N" onclick= "javascript:getWords(event,9)" /></td> 
+        <td><input class = "design" type= "button" name = "letter" id = "word10" Value ="E" onclick= "javascript:getWords(event,10)" /></td> 
+    </tr>
+    <tr>
+        <td colspan="9"><input class = "text" type ="text" style ="width: 490px; text-align:center;color:black" name = "create" id = "create" />  </td>
+        <td ><input class = "design" type= "button" style = "width: 50px;"name = "deleteInput" id = "deleteInput" Value = "X" onclick= "javascript:getWords(event)" />
+
+    </tr>
+    <tr>
+        <td colspan="10"><input class = "design" type= "button" style = "width: 550px;"name = "generate" id = "generate" Value = "Generate New Word" onclick= "javascript:displayNewWord(event,1)" /></td>
+    </tr>
+    <tr>
+        <td colspan="10"><textarea class = "text" name="textarea" style="width:550px;height:150px;color:black; font-size: 5;" name = "new" id = "new" Value = ""></textarea>
+
+        </td>
+    </tr>
+    <tr>
+        <td colspan="10" align="center"><input class = "design" type= "button" style = "width: 200px;"name = "clear" id = "clear" Value = "Clear" onclick= "javascript:getWords(event)" />
+        </td>
+    </tr>
+
+</table>
+</center>
+
+</body>
+</html>

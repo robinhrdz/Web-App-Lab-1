@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> calculator </title>
+    <style> 
+		body {
+				background : #bdf6e0; 
+				color : black; 
+			}
+        .design{
+            border: 0;
+            border-radius: 15px;
+            height:50px;
+            width:50px;
+            background-color: #4d88e8; 
+            font-size: 30px;
+            color: #ffffff;
+        }
+	</style>
+    <script>
+    function displaying_numbers(event,i) 
+    {
+        var inputText = document.getElementById("inputText");
+      
+        if (event.target.id == "number"+i)
+        {
+            inputText.value += document.getElementById("number"+i).value; 
+        }
+        else if (event.target.id == "C")
+        {
+            inputText.value = ""; 
+        }
+        else if (event.target.id == "sum")
+        {
+            inputText.value += document.getElementById("sum").value; 
+        }
+        else if (event.target.id == "rest")
+        {
+            inputText.value += document.getElementById("rest").value; 
+        }
+        else if (event.target.id == "mul")
+        {
+            inputText.value += document.getElementById("mul").value; 
+        }
+        else if (event.target.id == "div")
+        {
+            inputText.value += document.getElementById("div").value; 
+        }
+        else if (event.target.id =="dot")
+        {
+            inputText.value +="."; 
+        }
+        else if(event.target.id=="AC"){
+            inputText.value =  inputText.value.substring(0,  inputText.value.length-1);
+        }
+
+    }   
+    
+    function calculate()
+    {
+        var inputText = document.getElementById("inputText");
+        var inputValue = inputText.value; 
+        var inputLength = inputText.length; 
+        var indexOperand; 
+        var number1,  number2, result;
+
+
+        indexOperand = inputValue.indexOf("+"); 
+        if(indexOperand !==-1)
+        {
+            number1 = parseFloat(inputValue.substring(0,indexOperand));
+            number2 = parseFloat(inputValue.substring(indexOperand+1, inputLength))
+            result = number1+number2; 
+        }
+        indexOperand = inputValue.indexOf("-"); 
+        if(indexOperand !==-1)
+        {
+            number1 = parseFloat(inputValue.substring(0,indexOperand));
+            number2 = parseFloat(inputValue.substring(indexOperand+1, inputLength))
+            result = number1-number2; 
+        }
+        indexOperand = inputValue.indexOf("*"); 
+        if(indexOperand !==-1)
+        {
+            number1 = parseFloat(inputValue.substring(0,indexOperand));
+            number2 = parseFloat(inputValue.substring(indexOperand+1, inputLength))
+            result = number1*number2; 
+        }
+        indexOperand = inputValue.indexOf("/"); 
+        if(indexOperand !==-1)
+        {
+            number1 = parseFloat(inputValue.substring(0,indexOperand));
+            number2 = parseFloat(inputValue.substring(indexOperand+1, inputLength))
+            if(number2 == 0){
+                inputText.value = "undefined"; 
+                
+            }
+            else {
+                result = number1/number2; 
+            }  
+        }
+    
+        inputText.value = result; 
+         
+    }
+    </script>
+    </head>
+
+    <body > 
+        <center> 
+            <h1> Calculator </h1>
+        <table  border = "0" style="margin: 50px;padding: 20px;"  bgcolor = "#6535f2" aling ="center"  width = "10%"> 
+        <tr><td colspan = 4> <input type = "text" style ="height:50px; width: 230px; text-align:center;background-color: #ffffff; font-size: 30px;border-radius: 15px;border: 0;" name = "inputText" id = "inputText" /></td> </tr>
+        
+        <tr> 
+            <td><input class = "design" type= "button" name = "one" id = "number1" Value = "1" onclick= "javascript:displaying_numbers(event,1)" /></td> 
+            <td><input class = "design" type= "button" name = "two" id = "number2" Value = "2" onclick= "javascript:displaying_numbers(event,2)" /></td> 
+            <td><input class = "design" type= "button" name = "three" id = "number3" Value = "3" onclick= "javascript:displaying_numbers(event,3)" /></td>
+            <td><input class = "design" type= "button" style ="background-color: #8489e8;" name = "sum" id = "sum" Value = "+" onclick= "javascript:displaying_numbers(event)" /></td> 
+            
+        </tr> 
+        <tr>
+            <td><input class = "design" type= "button" name = "four" id = "number4" Value = "4" onclick= "javascript:displaying_numbers(event,4)" /></td> 
+            <td><input class = "design" type= "button" name = "five" id = "number5" Value = "5" onclick= "javascript:displaying_numbers(event,5)" /></td> 
+            <td><input class = "design" type= "button" name = "six" id = "number6" Value = "6" onclick= "javascript:displaying_numbers(event,6)" /></td>
+            <td><input class = "design" type= "button" style ="background-color: #8489e8;" name = "rest" id = "rest" Value = "-" onclick= "javascript:displaying_numbers(event)" /></td> 
+        </tr>
+        <tr>
+            <td><input class = "design" type= "button" name = "seven" id = "number7" Value = "7" onclick= "javascript:displaying_numbers(event,7)" /></td> 
+            <td><input class = "design" type= "button" name = "eight" id = "number8" Value = "8" onclick= "javascript:displaying_numbers(event,8)" /></td> 
+            <td><input class = "design" type= "button" name = "nine" id = "number9" Value = "9" onclick= "javascript:displaying_numbers(event,9)" /></td>
+            <td><input class = "design" type= "button" style ="background-color: #8489e8;" name = "mul" id = "mul" Value = "*" onclick= "javascript:displaying_numbers(event)" /></td> 
+        </tr>
+        <tr>
+            <td><input class = "design" type= "button" name = "C" id = "C" Value = "C" onclick= "javascript:displaying_numbers(event)" /></td> 
+            <td><input class = "design" type= "button" name = "zero" id = "number0" Value = "0" onclick= "javascript:displaying_numbers(event,0)" /></td> 
+            <td><input class = "design" type= "button" name = "dot" id = "dot" Value = "." onclick= "javascript:displaying_numbers(event)" /></td>
+            <td><input class = "design" type= "button" style ="background-color: #8489e8;" name = "div" id = "div" Value = "/" onclick= "javascript:displaying_numbers(event)" /></td> 
+            
+        </tr>
+        <tr>
+            <td colspan="3"><input class = "design" type= "button" style="height:50px;width:180px;background-color:#8489e8; font-size: 30px;color: #ffffff" name = "equal" id = "equal" Value = "=" onclick= "javascript:calculate()" /></td>
+            <td colspan="1" align="center"><input class = "design" type= "button" style="height:50px;width:50px;background-color:#8489e8; font-size: 30px;color: #ffffff" name = "AC" id = "AC" Value = "AC" onclick= "javascript:displaying_numbers(event)" /></td>
+        </tr>
+        </table> 
+        </center>
+
+    </body>
+</html>
